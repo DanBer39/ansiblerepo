@@ -51,4 +51,55 @@ Untracked files:
 
 nothing added to commit but untracked files present (use "git add" to track)
 
+c:\natey\Lab4tech\ansible>git add -A
+
+c:\natey\Lab4tech\ansible>git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   Git-Github.txt
+        new file:   ansible-puppet-terraform-jenkins.txt
+
+
+c:\natey\Lab4tech\ansible>git commit -m "adding files to my ansiblerepo repository in my github"
+[master (root-commit) 1626b49] adding files to my ansiblerepo repository in my github
+ 2 files changed, 178 insertions(+)
+ create mode 100644 Git-Github.txt
+ create mode 100644 ansible-puppet-terraform-jenkins.txt
+
+c:\natey\Lab4tech\ansible>git status
+On branch master
+nothing to commit, working tree clean
+
+c:\natey\Lab4tech\ansible>git remote add origin https://github.com/DanBer39/ansiblerepo.git
+
+c:\natey\Lab4tech\ansible>git status
+On branch master
+nothing to commit, working tree clean
+
+c:\natey\Lab4tech\ansible>git push origin master
+info: please complete authentication in your browser...
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 3.57 KiB | 3.57 MiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/DanBer39/ansiblerepo.git
+ * [new branch]      master -> master
+
+c:\natey\Lab4tech\ansible>git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   Git-Github.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
 c:\natey\Lab4tech\ansible>
+
+2. 
