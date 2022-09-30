@@ -1,0 +1,54 @@
+1. create a directory, a repository in github & link them together
+c:\natey\Lab4tech\ansible>dir
+ Le volume dans le lecteur C s’appelle Windows
+ Le numéro de série du volume est 540C-2848
+
+ Répertoire de c:\natey\Lab4tech\ansible
+
+09/30/2022  11:45 AM    <DIR>          .
+09/30/2022  11:45 AM    <DIR>          ..
+09/30/2022  11:07 AM             6,996 ansible-puppet-terraform-jenkins.txt
+09/30/2022  11:45 AM                 0 Git-Github.txt
+               2 fichier(s)            6,996 octets
+               2 Rép(s)  215,038,881,792 octets libres
+
+c:\natey\Lab4tech\ansible>git status
+fatal: not a git repository (or any of the parent directories): .git
+
+c:\natey\Lab4tech\ansible>git init
+Initialized empty Git repository in C:/natey/Lab4tech/ansible/.git/
+
+c:\natey\Lab4tech\ansible>dir
+ Le volume dans le lecteur C s’appelle Windows
+ Le numéro de série du volume est 540C-2848
+
+ Répertoire de c:\natey\Lab4tech\ansible
+
+09/30/2022  11:48 AM    <DIR>          .
+09/30/2022  11:48 AM    <DIR>          ..
+09/30/2022  11:07 AM             6,996 ansible-puppet-terraform-jenkins.txt
+09/30/2022  11:45 AM                 0 Git-Github.txt
+               2 fichier(s)            6,996 octets
+               2 Rép(s)  215,037,194,240 octets libres
+
+c:\natey\Lab4tech\ansible>git config --global user.name "Daniel Berhe"
+
+c:\natey\Lab4tech\ansible>git config --global user.email dnberhe@hotmail.com
+
+c:\natey\Lab4tech\ansible>git config --global -l
+user.email=dnberhe@hotmail.com
+user.name=Daniel Berhe
+
+c:\natey\Lab4tech\ansible>git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Git-Github.txt
+        ansible-puppet-terraform-jenkins.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+c:\natey\Lab4tech\ansible>

@@ -1,0 +1,124 @@
+What can I do:
+install ansible tower
+create yaml file & run it as well as debug it
+manage ansible tower
+
+1. Ansible/Ansible Tower/AWC course
+- need to know RHCSA in RHEL
+- credentials: one user is added in ansibleTower server and each managed servers
+- credentials passwords & keys are encrypted before they are saved to the ansibleTower database and can not be retrieved in clear text from the ansibleTower user interfae
+- users & teams can be assigned privileges to use ansibleTower credentials but the secrets are not exposed to them. Users added in ansibletower should be added too in the managed servers
+- credentials are ansibletowerobjects that are used to authenticate to remote systems for various purposes. They may provide secrets such as passwords, SSH key or 
+other supporting informations needed to successfully access or use a remote resource.
+- adding a user in ansibleTower credential is different from adding a user in other ansibleTower objects (Template, invetory, project, teams). If 
+you add a user in ansibleTower credential then you should add also this uer to all managed servers. if you add a user to other ansibleTower objects other than 
+ansibleTower credential then in order to use this user you need to add a use role of ansibleTower credential in order that this user use ansibleTower objects.
+- credential types in asibletower : 
+   machine : used to authenticate plabook logins &privilege escalation for invetory hosts
+   Network : to manage networking equipments
+   SCM (source control): used by ansibletower projects to clone & update ansible project materails from GIT/Subversion/Mercurial
+   invetory : used to update dynamic inventory
+   AWS:
+   AnsibleTower:
+   Google Compute Engine:
+   Insights:
+   Red Hat Virtualiyation
+   Vault
+   Vmware vCenter
+- In template verbosityc can be Normal, Verbose, Debug, More Verbose, Connection Debug level   
+- with permission auditor: only view is possible
+- with permission membre: only view is possible
+- invetory is list of managed server by ansible Tower that you can run against a playbook iff you have a credentials
+- user or team roles in a invetory are  use(read)/admin/ad hoc/update/read
+- user roles in a ansibleTower team are admin/membre/read
+- user roles in a ansibleTower templates are admin/execute/read
+- user roles in a ansibleTower credential are admin/use/read
+- a user with normal permission does not have even to view resources
+- A user which is membre of a team can execute a templates if execute permission is given to the team
+- know how to 
+	* give executable permission one one Template to one team
+	* add a user to one team
+	* 
+2. Ansible Tower  
+- package can be installed only on RHEL7, CentOS7 or Ubuto 16.04LTS 
+- package contains ansible core 2.6.x or later, postgreSQL & Rabbit MQ messaging
+- resources are Templates, Credentials, Project, Inventory, Inventory Script
+- it integrate via RestFul api, jenkins, cloud vm machine
+- AnsibleTower 3.1 onward support Active-Active-Cluster & system tracking
+- install package ansible core by command yum
+  download ansibletower package from www.ansible.com/products/tower/trial or www.ansible.com/products/tower/setup
+  gunzip ansible-tower-setup-latest.tar.gz puis 
+  tar -xvf ansible-tower-setup-latest.tar
+  sudo su - root
+  go ansible-tower-setup-x-x-x and in the file invetory put password (for admin_password, pg_password and rabbitmq_password) in 
+  ./setup.sh
+  go to web to see your ansibleTower webserver dashboard
+2. AnsibleTower dashboard:
+- Project: create Name, Description, SCM type, Project Base Path, Organisation & PlayBook Directory then save
+	- Inventories: create Name & Save. Then add Host & then save
+	- Credentials: create name, Description, Organisation, Credentia Type, user & passwd, activate "Enable Privilege Escalation" then save
+	- Templates: create a new Job Template by giving Name, Description; choose Job Type, inventory, credential, projet, playbook; create Forks, verbosity then save 
+	- run Templates by pressing the button rocket at the bottom of the dashboard of the Page Templates
+	- see the results in job
+- Users Types in the organisation are System Administrator, System Auditor & Normal User
+- roles in the organisation are admin, auditor, read & member
+- run adhoc commands by selecting Inventory on the dashboard then chose an invertory from the list then Hosts then "Run Commands"
+- run adhoc commands by selecting Inventory on the dashboard then chose an invertory from the list then Permission then the button + then select the user then select "Ad Hoc" & save. Then if logon as
+a user (do not forget to give this user, "use" role for the credential of the selected Inventory in order to run the adhoc commands) run adhoc commands by selecting Inventory on the dashboard then chose an invertory from the list then Hosts then "Run Commands"
+- role admin in ansibletower and in ansibletower teams are different
+NB. A given PlayBook Directory can be used only in one Project of ansibleTower.
+
+3. ansible commands
+- inventroy file is /etc/anisble/hosts with permission 777 with group name [testing] and containning mz managed 
+client servers: client1&client2
+- ansible -m command -a "uptime" testing
+- ansible -m command -a "cat /etc/redhat-release" testing
+- ansible -m command -a "lvdisplay" testing --become  # as we have elevated in visudo file (by adding danber ALL=(ALL) NOPASSWD: ALL) the user to become root via sudo su - 
+- ansible-playbook --syntax-check hello_world.yml
+- ansible-playbook -i inventory --private-key /root/.ssh/id_rsa hello_world.yml
+- 
+  
+4. /etc/ansible/ansible,cfg info
+  
+5. playbook info
+- copy:
+   dest: /tmp/resolv.conf
+   content: "nameserver 192.168.0.2\n" #if the file does not exist ansible will copy the content to the file if it'exist it does nothing.
+- service: name=httpd enabled=true state= started #
+- host: all  # to run for all hosts in the inventory
+
+6. My file example of playbook.zml & inverntorz,txt 
+- cat inverntorz,txt
+server.example.com
+[Prod]  <-- create a group in an inventory.txt file
+client1.example.com
+client2.example.com
+client3.example.com
+client4.example.com
+[DEV]
+dev1.example.com
+dev2.example.com
+[ALL:children]
+Prod  <-- add a group in another group inventory.txt file (list of managed server of Prod will be added)
+DEV
+- cat playbook.zml 
+---
+- hosts: all  <-- run the task below on all hosts in the inventory.txt given during the command ansible-playbook -i inventory --private-key /root/.ssh/id_rsa hello_world.yml
+  tasks:
+    - name: Content update  <-- decription of the task to do
+	  copy:   <-- task to do with the two parameters below
+	   dest: /tmp/resolve.conf
+	   content: "nameserver 192,168,1,2\n"
+	   
+	   
+7. Unix & other devops commands
+- systemctl status httpd
+- useradd danber
+- password  danber
+- su - danber <-- to logon as danber
+- 
+  
+8. Jenkins
+9. Groovy
+10. Terraform
+11. Puppet  
