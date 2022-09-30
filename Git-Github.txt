@@ -1,4 +1,4 @@
-1. create a directory, a repository in github & link them together
+1. create a local directory, a repository in github & link them together then push the local to remote repository in github
 c:\natey\Lab4tech\ansible>dir
  Le volume dans le lecteur C s’appelle Windows
  Le numéro de série du volume est 540C-2848
@@ -100,6 +100,78 @@ Changes not staged for commit:
 
 no changes added to commit (use "git add" and/or "git commit -a")
 
-c:\natey\Lab4tech\ansible>
+c:\natey\Lab4tech\ansible>git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   Git-Github.txt
 
-2. 
+no changes added to commit (use "git add" and/or "git commit -a")
+
+c:\natey\Lab4tech\ansible>git commit -m "updating files to my ansiblerepo repository in my github"
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   Git-Github.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+c:\natey\Lab4tech\ansible>git add -A
+
+c:\natey\Lab4tech\ansible>git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   Git-Github.txt
+
+
+c:\natey\Lab4tech\ansible>git commit -m "updating files to my ansiblerepo repository in my github"
+[master 12116b6] updating files to my ansiblerepo repository in my github
+ 1 file changed, 51 insertions(+)
+
+c:\natey\Lab4tech\ansible>git status
+On branch master
+nothing to commit, working tree clean
+
+c:\natey\Lab4tech\ansible>git push origin master
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 990 bytes | 990.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/DanBer39/ansiblerepo.git
+   1626b49..12116b6  master -> master
+
+c:\natey\Lab4tech\ansible>git status
+On branch master
+nothing to commit, working tree clean
+
+c:\natey\Lab4tech\ansible>
+2. create a local directory, a repository in github & link them together then pull the remote repository in github to lccal directory
+- mkdir d:\ansibleplays
+- cd d:\ansibleplays
+- git status
+- git init
+- git status
+- git config --global user.name "Dan Ber"
+- git config --global user.email dnberhe39@gmail.com
+- git config --global -l
+- git remote add origin https://github.com/DanBer39/ansiblerepo
+- dir
+- git pull origin master
+- dir
+3. course
+- by git commit you take a snapshoot
+- by git init we initialise the local directory to be a local repository
+- by git add -A we add files in the local repository
+- by git config --global user.name "Dan Ber" we add des information de user name & email
+- by git config --global user.email dnberhe@hotmail.com we add des information de user name & email
+- by git config --global -l we list the information de user name & email
+- by git push origin master you push from origin to master. Master is in gitbug
+- by git remote add origin https://github.com/DanBer39/ansiblerepo.git you link local director to remote repository indicated by https://...
+- To push from a local repo to remote repo do: git add -A; git commit -m "blablabla ..."; git push origin master
+- To pull from a remote repo to local repo  do: git pull origin master

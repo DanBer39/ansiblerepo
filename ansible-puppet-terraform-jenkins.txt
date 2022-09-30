@@ -35,10 +35,20 @@ ansibleTower credential then in order to use this user you need to add a use rol
 - user roles in a ansibleTower credential are admin/use/read
 - a user with normal permission does not have even to view resources
 - A user which is membre of a team can execute a templates if execute permission is given to the team
+- AnsibleTower by default comes with built-in dynamic inventory support for external inventory sources like
+    Amazon EC2
+    Google compute engine
+	Azure ARM
+	VMware vCenter
+	RedHat Salellite 6
+	RedHat cloundforms
+	OpenStack
+- if you have a dynamic inventory then always sync before running the template. Therefore through dynamiq inventory, ansibletower can manage clound servers.	
 - know how to 
 	* give executable permission one one Template to one team
 	* add a user to one team
-	* 
+	* connect a ansibleTower project connected to github using a ansibleTower credential that you created to connect to gitbub (here there is 
+	a user to connect to github & another user to execute a ansibleTower template in the <ansibleTower project )
 2. Ansible Tower  
 - package can be installed only on RHEL7, CentOS7 or Ubuto 16.04LTS 
 - package contains ansible core 2.6.x or later, postgreSQL & Rabbit MQ messaging
