@@ -1,3 +1,9 @@
+install git from https://git-scm.com/download/win
+cd Go to  GitReposLocal
+git config --global --add safe.directory C:/natey/Lab4tech/ansible 
+git add -A
+git commit
+git push
 1. create a local directory, a repository in github & link them together then push the local to remote repository in github
 c:\natey\Lab4tech\ansible>dir
  Le volume dans le lecteur C s’appelle Windows
