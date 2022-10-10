@@ -1,0 +1,38 @@
+sudo apt update
+sudo apt install git
+git --version
+echo "----------------------------"
+
+sudo apt-get install wget
+sudo apt-get install gnupg2
+sudo apt-get install net-tools
+wget https://packages.microsoft.com/config/debian/11/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+echo "----------------------------"
+sudo dpkg -i packages-microsoft-prod.deb
+echo "----------------------------"
+rm packages-microsoft-prod.deb
+
+sudo apt-get update; \
+  sudo apt-get install -y apt-transport-https &&  \
+  sudo apt-get update && \
+  sudo apt-get install -y dotnet-sdk-6.0
+echo "----------------------------"
+sudo apt-get install openjdk-11-jdk-headless
+echo "----------------------"
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key  add -
+echo "----------------------"
+sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+sudo apt update
+echo "----------------------"
+sudo apt install jenkins
+echo "----------------------"
+sudo ufw allow 8080
+echo "----------------------"
+sudo systemctl start jenkins
+sudo systemctl status jenkins
+sudo -s
+
+
+danber@debianjenkins:~$ ls
+install-git_dotnetsdk.sh  installjenkins.sh
+danber@debianjenkins:~$

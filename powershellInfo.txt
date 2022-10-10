@@ -1,0 +1,34 @@
+0. winver
+1. create being an admin user a Scheduler Task that runs automatically on the start, even when the user is not logged in
+schtasks /create /tn "FileMonitor" /sc onstart /delay 0000:30 /rl highest /ru system /tr "powershell.exe -file C:\Doc\Files\FileMonitor.ps1"
+2. list task
+schtasks /Query /TN "FileMonitor" /V /FO List
+3. delete task
+schtasks /Delete /TN "FileMonitor"
+4. enable running unsgined script
+set-executionpolicy remotesigned
+5.https://stackoverflow.com/questions/20575257/how-do-i-run-a-powershell-script-when-the-computer-starts
+
+
+6. Whenever you want PowerShell to run automatically / in the background / non-interactive, it’s a good idea to specify the parameters 
+-ExecutionPolicy Bypass to PowerShell.exe
+PowerShell.exe -ExecutionPolicy Bypass
+
+7. windows admin center on 127.0.0.1 & port 6516: https://localhost:6516/ 
+https://learn.microsoft.com/en-us/windows-server/manage/windows-admin-center/support/troubleshooting
+PS C:\Users\infra> Test-NetConnection -Port 6516 -ComputerName 127.0.0.1 -InformationLevel Detailed                                                                                                                                                                                                                                                                     ComputerName            : 127.0.0.1
+RemoteAddress           : 127.0.0.1
+RemotePort              : 6516
+NameResolutionResults   : 127.0.0.1
+                          kubernetes.docker.internal
+MatchingIPsecRules      :
+NetworkIsolationContext : Loopback
+IsAdmin                 : False
+InterfaceAlias          : Loopback Pseudo-Interface 1
+SourceAddress           : 127.0.0.1
+NetRoute (NextHop)      : 0.0.0.0
+TcpTestSucceeded        : True
+
+
+
+PS C:\Users\infra>

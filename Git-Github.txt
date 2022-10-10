@@ -124,6 +124,18 @@ Changes not staged for commit:
 
 no changes added to commit (use "git add" and/or "git commit -a")
 
+Sequence to do in order to pull
+git status
+git pull origin master
+
+Sequence to do in order to push
+git add -A
+git status
+git commit -m "updating files to my ansiblerepo repository in my github"
+git push origin master
+
+
+
 c:\natey\Lab4tech\ansible>git add -A
 
 c:\natey\Lab4tech\ansible>git status

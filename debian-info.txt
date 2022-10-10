@@ -1,0 +1,25 @@
+install debian image iso from https://www.debian.org/distrib/
+use advanced installation
+add user to the sudo group
+usermod -aG sudo username
+Best configuration network type for VM in virtualBox is NAT+HostOnlyConfiguration.
+nmtui
+-------------
+/etc/network/interfaces
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface (VirtualBox NAT):
+allow-hotplug enp0s3
+iface enp0s3 inet dhcp
+
+# The secondary network interface (to access Debian from host OS):
+allow-hotplug enp0s8
+iface enp0s8 inet dhcp
+-------------
+ifconfig enp0s8
+ifconfig enp0s8 down
+ifconfig enp0s8 up
+ifdown enp0s8
+dhclient -v enp0s8
