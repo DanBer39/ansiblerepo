@@ -1,0 +1,7 @@
+Power shell
+W+S system puis update&security puis "For Developpers" On
+W+r optionalFeature puis activer wsl2
+
+Get-WindowsOptionalFeature -Online | Where-Object {$_.FeatureName -eq "Microsoft-Windows-Subsystem-Linux"} | Format-Table
+Enable-WindowsOptionalFeature -Online -FeatureName  microsoft-windows-subsystem-linux
+install ubunto20.04.4LTS from microsoft store
